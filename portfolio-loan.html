@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Primary Meta Tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Loan Prediction System | Bafokeng Khoali Portfolio</title>
+    <meta name="description" content="Loan Approval Prediction System developed by Bafokeng Khoali - A machine learning application for predicting loan approval decisions.">
+    <meta name="keywords" content="loan prediction, machine learning, python, flask, mysql, data science, Bafokeng Khoali">
+    <meta name="author" content="Bafokeng Khoali">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Custom CSS -->
+    <style>
+        :root {
+            --primary-color: #6c5ce7;
+            --secondary-color: #2d3436;
+            --accent-color: #fd79a8;
+            --light-color: #f8f9fa;
+            --dark-color: #343a40;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: var(--secondary-color);
+            line-height: 1.7;
+            background-color: #f9f9f9;
+        }
+
+        .project-header {
+            background: linear-gradient(135deg, var(--primary-color), #5649d8);
+            color: white;
+            padding: 5rem 0;
+            margin-bottom: 3rem;
+        }
+
+        .project-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .project-subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            margin-bottom: 2rem;
+        }
+
+        .project-image {
+            border-radius: 12px;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+            margin-bottom: 2rem;
+            transition: transform 0.3s ease;
+        }
+
+        .project-image:hover {
+            transform: translateY(-5px);
+        }
+
+        .section-title {
+            position: relative;
+            margin-bottom: 2rem;
+            padding-bottom: 10px;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 70px;
+            height: 4px;
+            background: linear-gradient(to right, var(--primary-color), var(--accent-color));
+            border-radius: 3px;
+        }
+
+        .feature-card {
+            background: white;
+            border-radius: 12px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .feature-icon {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+        }
+
+        .tech-badge {
+            background: rgba(108, 92, 231, 0.1);
+            color: var(--primary-color);
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            margin-right: 0.5rem;
+            margin-bottom: 0.5rem;
+            display: inline-block;
+            font-weight: 500;
+        }
+
+        .btn-primary-custom {
+            background: var(--primary-color);
+            border: none;
+            padding: 0.75rem 1.5rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary-custom:hover {
+            background: #5649d8;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(108, 92, 231, 0.3);
+        }
+
+        .btn-outline-custom {
+            border: 1px solid var(--primary-color);
+            color: var(--primary-color);
+            padding: 0.75rem 1.5rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .btn-outline-custom:hover {
+            background: var(--primary-color);
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(108, 92, 231, 0.3);
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            color: white;
+            margin-bottom: 2rem;
+            transition: all 0.3s ease;
+        }
+
+        .back-link:hover {
+            color: var(--accent-color);
+            transform: translateX(-5px);
+        }
+
+        .screenshot-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .screenshot-item {
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .screenshot-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .screenshot-item img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        @media (max-width: 768px) {
+            .project-title {
+                font-size: 2rem;
+            }
+            
+            .project-subtitle {
+                font-size: 1rem;
+            }
+            
+            .screenshot-gallery {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Project Header -->
+    <div class="project-header">
+        <div class="container">
+            <a href="index.html#projects" class="back-link">
+                <i class="fas fa-arrow-left me-2"></i> Back to Projects
+            </a>
+            <h1 class="project-title">Loan Approval Prediction System</h1>
+            <p class="project-subtitle">Machine learning application for predicting loan approval decisions with explainable AI and MySQL backend</p>
+            <div class="d-flex gap-3">
+                <a href="https://github.com/bafokengBaffy/loan-prediction-system" class="btn btn-primary-custom" target="_blank">
+                    <i class="fab fa-github me-2"></i> View on GitHub
+                </a>
+                <a href="index.html#contact" class="btn btn-outline-custom">
+                    <i class="fas fa-envelope me-2"></i> Contact Me
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Project Content -->
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8">
+                <!-- Project Description -->
+                <section class="mb-5">
+                    <h2 class="section-title">Project Overview</h2>
+                    <p>
+                        The Loan Approval Prediction System is a comprehensive machine learning application designed to 
+                        predict loan approval decisions for financial institutions. The system analyzes applicant data 
+                        and provides instant predictions with explainable AI insights, helping both loan officers and 
+                        applicants understand the decision-making process.
+                    </p>
+                    <p>
+                        Developed as part of my academic and professional exploration of machine learning applications 
+                        in finance, this project combines data science techniques with practical business requirements 
+                        to create a tool that can significantly streamline the loan approval process.
+                    </p>
+                </section>
+
+                <!-- Key Features -->
+                <section class="mb-5">
+                    <h2 class="section-title">Key Features</h2>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="feature-card">
+                                <div class="feature-icon">
+                                    <i class="fas fa-bolt"></i>
+                                </div>
+                                <h3>Real-time Prediction</h3>
+                                <p>
+                                    Get instant loan approval predictions by submitting applicant information through 
+                                    an intuitive interface.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="feature-card">
+                                <div class="feature-icon">
+                                    <i class="fas fa-chart-pie"></i>
+                                </div>
+                                <h3>Interactive Visualizations</h3>
+                                <p>
+                                    Explore data with dark-mode optimized charts that help visualize the prediction 
+                                    factors and applicant data.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="feature-card">
+                                <div class="feature-icon">
+                                    <i class="fas fa-lightbulb"></i>
+                                </div>
+                                <h3>Feature Importance</h3>
+                                <p>
+                                    Understand the key decision factors behind predictions with detailed explanations 
+                                    of how each feature impacts the outcome.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="feature-card">
+                                <div class="feature-icon">
+                                    <i class="fas fa-exclamation-triangle"></i>
+                                </div>
+                                <h3>Outlier Detection</h3>
+                                <p>
+                                    Identify unusual or potentially risky applications with built-in outlier detection 
+                                    algorithms.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Technical Details -->
+                <section class="mb-5">
+                    <h2 class="section-title">Technical Implementation</h2>
+                    <p>
+                        The system is built with a Python backend using Flask for the web framework. Machine learning 
+                        models were developed using scikit-learn, with extensive feature engineering and model 
+                        selection processes to ensure accuracy and reliability.
+                    </p>
+                    <p>
+                        The frontend combines HTML, CSS, and JavaScript with Chart.js for visualizations. Data is 
+                        persisted in a MySQL database, with proper indexing and optimization for quick query responses.
+                    </p>
+                    <div class="mb-4">
+                        <h4>Technologies Used:</h4>
+                        <div>
+                            <span class="tech-badge">Python</span>
+                            <span class="tech-badge">Flask</span>
+                            <span class="tech-badge">scikit-learn</span>
+                            <span class="tech-badge">Pandas</span>
+                            <span class="tech-badge">NumPy</span>
+                            <span class="tech-badge">MySQL</span>
+                            <span class="tech-badge">JavaScript</span>
+                            <span class="tech-badge">Chart.js</span>
+                            <span class="tech-badge">HTML/CSS</span>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <div class="col-lg-4">
+                <!-- Project Image -->
+                <div class="sticky-top" style="top: 20px;">
+                    <img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1511&q=80" 
+                         alt="Loan Prediction System" class="img-fluid project-image">
+                    
+                    <!-- Project Details -->
+                    <div class="card mb-4">
+                        <div class="card-body">
+                            <h5 class="card-title">Project Details</h5>
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                    <span>Category</span>
+                                    <span>Machine Learning</span>
+                                </li>
+                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                    <span>Completion Date</span>
+                                    <span>May 2023</span>
+                                </li>
+                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                    <span>Status</span>
+                                    <span>Completed</span>
+                                </li>
+                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                    <span>License</span>
+                                    <span>MIT</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Challenges -->
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Key Challenges</h5>
+                            <ul>
+                                <li>Handling imbalanced dataset</li>
+                                <li>Feature selection and engineering</li>
+                                <li>Model interpretability</li>
+                                <li>Database optimization</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Screenshots -->
+        <section class="my-5">
+            <h2 class="section-title">System Screenshots</h2>
+            <div class="screenshot-gallery">
+                <div class="screenshot-item">
+                    <img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" 
+                         alt="Dashboard View">
+                </div>
+                <div class="screenshot-item">
+                    <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" 
+                         alt="Prediction Interface">
+                </div>
+                <div class="screenshot-item">
+                    <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" 
+                         alt="Data Visualization">
+                </div>
+            </div>
+        </section>
+
+        <!-- Future Enhancements -->
+        <section class="my-5">
+            <h2 class="section-title">Future Enhancements</h2>
+            <p>
+                While the current system provides robust functionality, several enhancements are planned for future 
+                versions:
+            </p>
+            <ul>
+                <li>Integration with credit bureau APIs for automated data verification</li>
+                <li>Implementation of more advanced ensemble models</li>
+                <li>Mobile application version for field agents</li>
+                <li>Multi-language support for broader accessibility</li>
+                <li>Enhanced security features for data protection</li>
+            </ul>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-4">
+        <div class="container text-center">
+            <p>© <script>document.write(new Date().getFullYear())</script> Bafokeng Khoali. All Rights Reserved.</p>
+            <div class="d-flex justify-content-center gap-3">
+                <a href="https://web.facebook.com/thabo.khosi.146" target="_blank" class="text-white">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+                <a href="https://wa.me/26663210786" target="_blank" class="text-white">
+                    <i class="fab fa-whatsapp"></i>
+                </a>
+                <a href="https://www.linkedin.com/in/bafokeng-khoali-5933351b1/" target="_blank" class="text-white">
+                    <i class="fab fa-linkedin-in"></i>
+                </a>
+                <a href="mailto:khoalibafokeng6@gmail.com" class="text-white">
+                    <i class="fas fa-envelope"></i>
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

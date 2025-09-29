@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Primary Meta Tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Smart Water Metering System | Bafokeng Khoali Portfolio</title>
+    <meta name="description" content="IoT-based Smart Water Metering System developed by Bafokeng Khoali - A comprehensive solution for water consumption monitoring with AI analytics.">
+    <meta name="keywords" content="IoT, water metering, flutter, python, firebase, AI, Bafokeng Khoali">
+    <meta name="author" content="Bafokeng Khoali">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Custom CSS -->
+    <style>
+        :root {
+            --primary-color: #3498db;
+            --secondary-color: #2d3436;
+            --accent-color: #2ecc71;
+            --light-color: #f8f9fa;
+            --dark-color: #343a40;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: var(--secondary-color);
+            line-height: 1.7;
+            background-color: #f9f9f9;
+        }
+
+        .project-header {
+            background: linear-gradient(135deg, var(--primary-color), #2980b9);
+            color: white;
+            padding: 5rem 0;
+            margin-bottom: 3rem;
+        }
+
+        .project-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .project-subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            margin-bottom: 2rem;
+        }
+
+        .project-image {
+            border-radius: 12px;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+            margin-bottom: 2rem;
+            transition: transform 0.3s ease;
+        }
+
+        .project-image:hover {
+            transform: translateY(-5px);
+        }
+
+        .section-title {
+            position: relative;
+            margin-bottom: 2rem;
+            padding-bottom: 10px;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 70px;
+            height: 4px;
+            background: linear-gradient(to right, var(--primary-color), var(--accent-color));
+            border-radius: 3px;
+        }
+
+        .feature-card {
+            background: white;
+            border-radius: 12px;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .feature-icon {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 1.5rem;
+        }
+
+        .tech-badge {
+            background: rgba(52, 152, 219, 0.1);
+            color: var(--primary-color);
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            margin-right: 0.5rem;
+            margin-bottom: 0.5rem;
+            display: inline-block;
+            font-weight: 500;
+        }
+
+        .btn-primary-custom {
+            background: var(--primary-color);
+            border: none;
+            padding: 0.75rem 1.5rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary-custom:hover {
+            background: #2980b9;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(52, 152, 219, 0.3);
+        }
+
+        .btn-outline-custom {
+            border: 1px solid var(--primary-color);
+            color: var(--primary-color);
+            padding: 0.75rem 1.5rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .btn-outline-custom:hover {
+            background: var(--primary-color);
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(52, 152, 219, 0.3);
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            color: white;
+            margin-bottom: 2rem;
+            transition: all 0.3s ease;
+        }
+
+        .back-link:hover {
+            color: var(--accent-color);
+            transform: translateX(-5px);
+        }
+
+        .screenshot-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .screenshot-item {
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .screenshot-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .screenshot-item img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        .system-architecture {
+            width: 100%;
+            max-width: 800px;
+            margin: 2rem auto;
+            display: block;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        @media (max-width: 768px) {
+            .project-title {
+                font-size: 2rem;
+            }
+            
+            .project-subtitle {
+                font-size: 1rem;
+            }
+            
+            .screenshot-gallery {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Project Header -->
+    <div class="project-header">
+        <div class="container">
+            <a href="index.html#projects" class="back-link">
+                <i class="fas fa-arrow-left me-2"></i> Back to Projects
+            </a>
+            <h1 class="project-title">Smart Water Metering System</h1>
+            <p class="project-subtitle">IoT-based solution for water consumption monitoring with AI analytics and real-time alerts</p>
+            <div class="d-flex gap-3">
+                <a href="https://github.com/bafokengBaffy/smart_water_metering_system" class="btn btn-primary-custom" target="_blank">
+                    <i class="fab fa-github me-2"></i> View on GitHub
+                </a>
+                <a href="index.html#contact" class="btn btn-outline-custom">
+                    <i class="fas fa-envelope me-2"></i> Contact Me
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Project Content -->
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8">
+                <!-- Project Description -->
+                <section class="mb-5">
+                    <h2 class="section-title">Project Overview</h2>
+                    <p>
+                        The Smart Water Metering System is an innovative IoT solution designed to monitor water 
+                        consumption in real-time, detect leaks, and provide actionable insights through AI-powered 
+                        analytics. The system helps municipalities, businesses, and homeowners optimize water usage 
+                        and reduce waste.
+                    </p>
+                    <p>
+                        Developed as a response to water scarcity challenges, this project combines hardware sensors 
+                        with a mobile application and cloud-based analytics to create a comprehensive water management 
+                        solution.
+                    </p>
+                </section>
+
+                <!-- Key Features -->
+                <section class="mb-5">
+                    <h2 class="section-title">Key Features</h2>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="feature-card">
+                                <div class="feature-icon">
+                                    <i class="fas fa-tint"></i>
+                                </div>
+                                <h3>Real-time Monitoring</h3>
+                                <p>
+                                    Continuously track water flow and consumption patterns with IoT sensors that 
+                                    transmit data to the cloud.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="feature-card">
+                                <div class="feature-icon">
+                                    <i class="fas fa-bell"></i>
+                                </div>
+                                <h3>Leak Detection</h3>
+                                <p>
+                                    Receive instant alerts when abnormal water flow patterns suggest potential leaks 
+                                    or pipe bursts.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="feature-card">
+                                <div class="feature-icon">
+                                    <i class="fas fa-chart-line"></i>
+                                </div>
+                                <h3>Usage Analytics</h3>
+                                <p>
+                                    AI-powered analysis of consumption patterns to identify waste and suggest 
+                                    optimization opportunities.
+                                </p>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="feature-card">
+                                <div class="feature-icon">
+                                    <i class="fas fa-mobile-alt"></i>
+                                </div>
+                                <h3>Mobile App</h3>
+                                <p>
+                                    Flutter-based cross-platform mobile application for monitoring and controlling 
+                                    the system remotely.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- System Architecture -->
+                <section class="mb-5">
+                    <h2 class="section-title">System Architecture</h2>
+                    <p>
+                        The system follows a three-tier architecture with IoT devices at the edge, a cloud-based 
+                        processing layer, and mobile/web interfaces for user interaction. Data flows from sensors 
+                        through Firebase to the AI processing engine, with results visualized in the mobile app.
+                    </p>
+                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" 
+                         alt="System Architecture" class="system-architecture">
+                </section>
+
+                <!-- Technical Details -->
+                <section class="mb-5">
+                    <h2 class="section-title">Technical Implementation</h2>
+                    <p>
+                        The hardware component uses flow sensors connected to microcontrollers (ESP32) that transmit 
+                        data via WiFi. The cloud backend is built with Firebase for real-time data synchronization 
+                        and Python for AI processing.
+                    </p>
+                    <p>
+                        The mobile application, developed with Flutter, provides a cross-platform interface with 
+                        real-time dashboards, historical data visualization, and alert management.
+                    </p>
+                    <div class="mb-4">
+                        <h4>Technologies Used:</h4>
+                        <div>
+                            <span class="tech-badge">Flutter</span>
+                            <span class="tech-badge">Dart</span>
+                            <span class="tech-badge">Python</span>
+                            <span class="tech-badge">Firebase</span>
+                            <span class="tech-badge">TensorFlow</span>
+                            <span class="tech-badge">ESP32</span>
+                            <span class="tech-badge">IoT</span>
+                            <span class="tech-badge">AI</span>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <div class="col-lg-4">
+                <!-- Project Image -->
+                <div class="sticky-top" style="top: 20px;">
+                    <img src="https://images.unsplash.com/photo-1509316785289-025f5b846b35?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" 
+                         alt="Smart Water Metering System" class="img-fluid project-image">
+                    
+                    <!-- Project Details -->
+                    <div class="card mb-4">
+                        <div class="card-body">
+                            <h5 class="card-title">Project Details</h5>
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                    <span>Category</span>
+                                    <span>IoT & AI</span>
+                                </li>
+                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                    <span>Completion Date</span>
+                                    <span>May 2023</span>
+                                </li>
+                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                    <span>Status</span>
+                                    <span>Completed</span>
+                                </li>
+                                <li class="list-group-item d-flex justify-content-between align-items-center">
+                                    <span>License</span>
+                                    <span>Apache 2.0</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Challenges -->
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Key Challenges</h5>
+                            <ul>
+                                <li>Hardware-software integration</li>
+                                <li>Real-time data processing</li>
+                                <li>AI model training with limited data</li>
+                                <li>Cross-platform compatibility</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Screenshots -->
+        <section class="my-5">
+            <h2 class="section-title">Application Screenshots</h2>
+            <div class="screenshot-gallery">
+                <div class="screenshot-item">
+                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" 
+                         alt="Dashboard View">
+                </div>
+                <div class="screenshot-item">
+                    <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" 
+                         alt="Consumption Analytics">
+                </div>
+                <div class="screenshot-item">
+                    <img src="https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" 
+                         alt="Alert Notifications">
+                </div>
+            </div>
+        </section>
+
+        <!-- Future Enhancements -->
+        <section class="my-5">
+            <h2 class="section-title">Future Enhancements</h2>
+            <p>
+                The system is continuously being improved with additional features and capabilities:
+            </p>
+            <ul>
+                <li>Integration with smart home systems</li>
+                <li>Advanced predictive maintenance features</li>
+                <li>Water quality monitoring capabilities</li>
+                <li>Blockchain-based water trading for agricultural use</li>
+                <li>Enhanced machine learning models for better anomaly detection</li>
+            </ul>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white py-4">
+        <div class="container text-center">
+            <p>© <script>document.write(new Date().getFullYear())</script> Bafokeng Khoali. All Rights Reserved.</p>
+            <div class="d-flex justify-content-center gap-3">
+                <a href="https://web.facebook.com/thabo.khosi.146" target="_blank" class="text-white">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+                <a href="https://wa.me/26663210786" target="_blank" class="text-white">
+                    <i class="fab fa-whatsapp"></i>
+                </a>
+                <a href="https://www.linkedin.com/in/bafokeng-khoali-5933351b1/" target="_blank" class="text-white">
+                    <i class="fab fa-linkedin-in"></i>
+                </a>
+                <a href="mailto:khoalibafokeng6@gmail.com" class="text-white">
+                    <i class="fas fa-envelope"></i>
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>

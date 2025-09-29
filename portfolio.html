@@ -1,0 +1,761 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <!-- Primary Meta Tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="title" content="Bafokeng Khoali - Portfolio">
+    <meta name="description" content="Portfolio of Bafokeng Khoali showcasing web development projects, mobile apps, and computer maintenance services.">
+    <meta name="keywords" content="Bafokeng Khoali, portfolio, web development, mobile apps, computer repair, IT services, Lesotho">
+    <meta name="author" content="Bafokeng Khoali">
+    <meta name="robots" content="index, follow">
+
+    <!-- Open Graph / Facebook Meta Tags -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://yourdomain.com/portfolio.html">
+    <meta property="og:title" content="Bafokeng Khoali - Portfolio">
+    <meta property="og:description" content="Portfolio of Bafokeng Khoali showcasing web development projects, mobile apps, and computer maintenance services.">
+    <meta property="og:image" content="https://yourdomain.com/img/portfolio-preview.jpg">
+
+    <!-- Twitter Meta Tags -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://yourdomain.com/portfolio.html">
+    <meta property="twitter:title" content="Bafokeng Khoali - Portfolio">
+    <meta property="twitter:description" content="Portfolio of Bafokeng Khoali showcasing web development projects, mobile apps, and computer maintenance services.">
+    <meta property="twitter:image" content="https://yourdomain.com/img/portfolio-preview.jpg">
+
+    <title>Portfolio | Bafokeng Khoali</title>
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Animate.css -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+
+    <!-- Hover.css -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/hover.css/2.3.1/css/hover-min.css">
+
+    <!-- Custom CSS -->
+    <style>
+        :root {
+            --primary-color: #6c5ce7;
+            --secondary-color: #2d3436;
+            --accent-color: #fd79a8;
+            --light-color: #f8f9fa;
+            --dark-color: #343a40;
+            --text-color: #2d3436;
+            --text-light: #636e72;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: var(--text-color);
+            line-height: 1.7;
+            background-color: #f9f9f9;
+            padding-top: 70px;
+        }
+
+        /* Navigation - Same as index.html */
+        .navbar {
+            background: rgba(255, 255, 255, 0.95) !important;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+            height: 70px;
+            transition: all 0.4s ease;
+        }
+
+        .navbar.scrolled {
+            background: rgba(255, 255, 255, 0.98) !important;
+            box-shadow: 0 5px 25px rgba(0, 0, 0, 0.15);
+            height: 60px;
+        }
+
+        .navbar-brand {
+            font-weight: 700;
+            font-size: 1.5rem;
+            color: var(--primary-color) !important;
+        }
+
+        .nav-link {
+            font-weight: 500;
+            padding: 0.5rem 1rem !important;
+            margin: 0 0.2rem;
+            position: relative;
+            color: var(--secondary-color) !important;
+            transition: all 0.3s ease;
+        }
+
+        .nav-link::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary-color);
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover::before {
+            width: 100%;
+        }
+
+        .nav-link.active {
+            color: var(--primary-color) !important;
+        }
+
+        .nav-link.active::before {
+            width: 100%;
+        }
+
+        /* Header - Same as index.html */
+        header {
+            background: linear-gradient(135deg, var(--primary-color), #5649d8);
+            color: white;
+            padding: 6rem 0 4rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiPjxkZWZzPjxwYXR0ZXJuIGlkPSJwYXR0ZXJuIiB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHBhdHRlcm5Vbml0cz0idXNlclNwYWNlT25Vc2UiIHBhdHRlcm5UcmFuc2Zvcm09InJvdGF0ZSg0NSkiPjxyZWN0IHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgZmlsbD0icmdiYSgyNTUsMjU1LDI1NSwwLjA1KSIvPjwvcGF0dGVybj48L2RlZnM+PHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0idXJsKCNwYXR0ZXJuKSIvPjwvc3ZnPg==');
+            opacity: 0.2;
+        }
+
+        .profile-img {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            border: 5px solid rgba(255, 255, 255, 0.3);
+            object-fit: cover;
+            transition: all 0.5s ease;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+        }
+
+        .profile-img:hover {
+            transform: scale(1.05) rotate(5deg);
+            border-color: rgba(255, 255, 255, 0.6);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .header-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .contact-info {
+            margin: 1.5rem 0;
+        }
+
+        .contact-info a {
+            color: white;
+            margin-right: 1.5rem;
+            display: inline-flex;
+            align-items: center;
+            transition: all 0.3s ease;
+        }
+
+        .contact-info a:hover {
+            color: white;
+            transform: translateY(-3px);
+            text-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .contact-info i {
+            margin-right: 8px;
+            font-size: 1.1rem;
+        }
+
+        .social-links {
+            margin-top: 2rem;
+        }
+
+        .social-links a {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 45px;
+            height: 45px;
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 50%;
+            margin-right: 12px;
+            color: white;
+            transition: all 0.4s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .social-links a::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: 0.5s;
+        }
+
+        .social-links a:hover {
+            background: rgba(255, 255, 255, 0.25);
+            transform: translateY(-5px) rotate(10deg);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .social-links a:hover::before {
+            left: 100%;
+        }
+
+        .social-links i {
+            font-size: 1.3rem;
+        }
+
+        /* Portfolio Page Specific Styles */
+        .page-header {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), 
+                        url('https://images.unsplash.com/photo-1499750310107-5fef28a66643?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80') no-repeat center center;
+            background-size: cover;
+            padding: 100px 0;
+            color: white;
+            text-align: center;
+        }
+        
+        .portfolio-item {
+            margin-bottom: 30px;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+            background: white;
+        }
+        
+        .portfolio-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+        }
+        
+        .portfolio-img {
+            height: 200px;
+            width: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .portfolio-item:hover .portfolio-img {
+            transform: scale(1.05);
+        }
+        
+        .portfolio-content {
+            padding: 20px;
+        }
+        
+        .tech-tag {
+            display: inline-block;
+            background: rgba(108, 92, 231, 0.1);
+            color: var(--primary-color);
+            padding: 3px 10px;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            margin-right: 5px;
+            margin-bottom: 5px;
+        }
+        
+        .repair-item {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            height: 100%;
+            transition: all 0.3s ease;
+        }
+        
+        .repair-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+        
+        .repair-icon {
+            font-size: 2rem;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            transition: all 0.3s ease;
+        }
+        
+        .repair-item:hover .repair-icon {
+            transform: scale(1.2);
+            color: var(--accent-color);
+        }
+        
+        .btn-primary {
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
+        }
+        
+        .btn-primary:hover {
+            background-color: #5649d8;
+            border-color: #5649d8;
+        }
+
+        .section-title {
+            margin-bottom: 4rem;
+            text-align: center;
+        }
+
+        .section-title h2 {
+            display: inline-block;
+            position: relative;
+        }
+
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 70px;
+            height: 5px;
+            background: var(--primary-color);
+            border-radius: 3px;
+        }
+
+        /* Footer - Same as index.html */
+        footer {
+            background: var(--secondary-color);
+            color: white;
+            text-align: center;
+            padding: 3rem 0;
+            position: relative;
+        }
+
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(to right, var(--primary-color), var(--accent-color));
+        }
+
+        footer p {
+            color: rgba(255, 255, 255, 0.8);
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            color: white;
+            font-size: 1.3rem;
+            transition: all 0.4s ease;
+        }
+
+        .footer-social-links a:hover {
+            background: var(--primary-color);
+            transform: translateY(-5px) rotate(10deg);
+        }
+
+        .copyright {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.6);
+        }
+
+        /* Responsive Adjustments */
+        @media (max-width: 768px) {
+            .profile-img {
+                width: 150px;
+                height: 150px;
+            }
+            
+            header {
+                padding: 4rem 0;
+            }
+            
+            .page-header {
+                padding: 80px 0;
+            }
+        }
+
+        @media (max-width: 576px) {
+            .profile-img {
+                width: 120px;
+                height: 120px;
+            }
+            
+            header {
+                padding: 3rem 0;
+            }
+            
+            .page-header {
+                padding: 60px 0;
+            }
+            
+            .contact-info a {
+                display: block;
+                margin-bottom: 1rem;
+            }
+        }
+    </style>
+</head>
+
+<body data-bs-spy="scroll" data-bs-target="#navbar" data-bs-offset="100">
+    <!-- Navigation -->
+    <nav id="navbar" class="navbar navbar-expand-lg navbar-light fixed-top">
+        <div class="container">
+            <a class="navbar-brand hvr-buzz" href="index.html">Bafokeng Khoali</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link hvr-underline-from-center" href="index.html#home">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link hvr-underline-from-center" href="index.html#about">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link hvr-underline-from-center" href="index.html#experience">Experience</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link hvr-underline-from-center" href="index.html#education">Education</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link hvr-underline-from-center" href="index.html#skills">Skills</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link hvr-underline-from-center" href="index.html#projects">Projects</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link hvr-underline-from-center active" href="portfolio.html">Portfolio</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link hvr-underline-from-center" href="index.html#interests">Interests</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Header Section -->
+    <header id="home">
+        <div class="container">
+            <div class="header-content text-center">
+                <img src="img/profile.jpg" alt="Bafokeng Khoali" class="profile-img mb-4 animate__animated">
+                <h1 class="animate__animated animate__fadeInDown">Bafokeng Khoali</h1>
+                <h2 class="animate__animated animate__fadeInDown animate__delay-1s">IT Specialist & Developer</h2>
+                <div class="contact-info animate__animated animate__fadeIn animate__delay-2s">
+                    <a href="tel:+26663210786"><i class="fas fa-phone"></i> (+266) 63210786</a>
+                    <a href="mailto:khoalibafokeng6@gmail.com"><i class="fas fa-envelope"></i>
+                        khoalibafokeng6@gmail.com</a>
+                    <a href="#"><i class="fas fa-map-marker-alt"></i> Maseru, Lesotho</a>
+                </div>
+                <div class="social-links animate__animated animate__fadeIn animate__delay-3s">
+                    <a href="https://web.facebook.com/thabo.khosi.146" target="_blank" aria-label="Facebook">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="https://wa.me/26663210786" target="_blank" aria-label="WhatsApp">
+                        <i class="fab fa-whatsapp"></i>
+                    </a>
+                    <a href="https://www.linkedin.com/in/bafokeng-khoali-5933351b1/" target="_blank"
+                        aria-label="LinkedIn">
+                        <i class="fab fa-linkedin-in"></i>
+                    </a>
+                    <a href="mailto:khoalibafokeng6@gmail.com" aria-label="Email">
+                        <i class="fas fa-envelope"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Portfolio Header -->
+    <section class="page-header">
+        <div class="container">
+            <h1 class="animate__animated animate__fadeInDown">My Complete Portfolio</h1>
+            <p class="lead animate__animated animate__fadeIn animate__delay-1s">Web Development, Mobile Apps, and Computer Maintenance Services</p>
+        </div>
+    </section>
+
+    <!-- Development Projects -->
+    <section class="py-5">
+        <div class="container">
+            <div class="section-title">
+                <h2 class="animate__animated animate__fadeIn">Development Projects</h2>
+                <p class="text-muted">Web and mobile applications I've developed</p>
+            </div>
+            
+            <div class="row">
+                <!-- Project 1 -->
+                <div class="col-md-4">
+                    <div class="portfolio-item animate__animated animate__fadeInUp">
+                        <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" 
+                             alt="E-Commerce Platform" class="portfolio-img">
+                        <div class="portfolio-content">
+                            <h3>E-Commerce Platform</h3>
+                            <p>Full-featured online store with payment integration</p>
+                            <div class="mb-3">
+                                <span class="tech-tag">React</span>
+                                <span class="tech-tag">Node.js</span>
+                                <span class="tech-tag">MongoDB</span>
+                                <span class="tech-tag">Stripe API</span>
+                            </div>
+                            <a href="#" class="btn btn-sm btn-primary">View Details</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Project 2 -->
+                <div class="col-md-4">
+                    <div class="portfolio-item animate__animated animate__fadeInUp animate__delay-1s">
+                        <img src="https://images.unsplash.com/photo-1555774698-0b77e0d5fac6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" 
+                             alt="Health & Fitness App" class="portfolio-img">
+                        <div class="portfolio-content">
+                            <h3>Health & Fitness App</h3>
+                            <p>Mobile application for workout tracking and health monitoring</p>
+                            <div class="mb-3">
+                                <span class="tech-tag">Flutter</span>
+                                <span class="tech-tag">Firebase</span>
+                                <span class="tech-tag">Google Fit API</span>
+                            </div>
+                            <a href="#" class="btn btn-sm btn-primary">View Details</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Project 3 -->
+                <div class="col-md-4">
+                    <div class="portfolio-item animate__animated animate__fadeInUp animate__delay-2s">
+                        <img src="https://images.unsplash.com/photo-1551434678-e076c223a692?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" 
+                             alt="Business Dashboard" class="portfolio-img">
+                        <div class="portfolio-content">
+                            <h3>Business Analytics Dashboard</h3>
+                            <p>Custom dashboard for visualizing business metrics</p>
+                            <div class="mb-3">
+                                <span class="tech-tag">Vue.js</span>
+                                <span class="tech-tag">D3.js</span>
+                                <span class="tech-tag">REST API</span>
+                            </div>
+                            <a href="#" class="btn btn-sm btn-primary">View Details</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Computer Repairs Section -->
+    <section id="repairs" class="py-5 bg-light">
+        <div class="container">
+            <div class="section-title">
+                <h2 class="animate__animated animate__fadeIn">Computer Maintenance & Repairs</h2>
+                <p class="text-muted">Professional IT services and hardware repairs</p>
+            </div>
+            
+            <div class="row">
+                <!-- Repair 1 -->
+                <div class="col-md-4 mb-4">
+                    <div class="repair-item animate__animated animate__fadeInUp">
+                        <div class="repair-icon">
+                            <i class="fas fa-laptop"></i>
+                        </div>
+                        <h3>Laptop Screen Replacement</h3>
+                        <p>Replaced damaged LCD screens on various laptop models including Dell, HP, and Lenovo, restoring full functionality.</p>
+                        <a href="https://www.dell.com/support/kbdoc/en-us/000126713/how-to-replace-the-lcd-screen-on-your-dell-laptop" 
+                           class="btn btn-sm btn-outline-primary mt-2" target="_blank">View Guide</a>
+                    </div>
+                </div>
+                
+                <!-- Repair 2 -->
+                <div class="col-md-4 mb-4">
+                    <div class="repair-item animate__animated animate__fadeInUp animate__delay-1s">
+                        <div class="repair-icon">
+                            <i class="fas fa-battery-full"></i>
+                        </div>
+                        <h3>Battery Replacement</h3>
+                        <p>Diagnosed and replaced failing batteries in laptops and smartphones, significantly improving device performance.</p>
+                        <a href="https://support.apple.com/en-us/HT204075" 
+                           class="btn btn-sm btn-outline-primary mt-2" target="_blank">View Guide</a>
+                    </div>
+                </div>
+                
+                <!-- Repair 3 -->
+                <div class="col-md-4 mb-4">
+                    <div class="repair-item animate__animated animate__fadeInUp animate__delay-2s">
+                        <div class="repair-icon">
+                            <i class="fas fa-hdd"></i>
+                        </div>
+                        <h3>Hard Drive Recovery</h3>
+                        <p>Recovered critical data from failing hard drives and performed clean OS installations with data migration.</p>
+                        <a href="https://support.microsoft.com/en-us/windows/backup-and-restore-in-windows-10-352091d2-bb9d-3ea3-ed18-52ef2b88cbef" 
+                           class="btn btn-sm btn-outline-primary mt-2" target="_blank">Recovery Tips</a>
+                    </div>
+                </div>
+                
+                <!-- Repair 4 -->
+                <div class="col-md-4 mb-4">
+                    <div class="repair-item animate__animated animate__fadeInUp">
+                        <div class="repair-icon">
+                            <i class="fas fa-virus"></i>
+                        </div>
+                        <h3>Virus Removal</h3>
+                        <p>Removed complex malware infections while preserving important files and restoring system security.</p>
+                        <a href="https://support.microsoft.com/en-us/windows/protect-my-pc-from-viruses-9a5a3305-0d91-9f47-83a5-8c2a0a5b5b1c" 
+                           class="btn btn-sm btn-outline-primary mt-2" target="_blank">Removal Guide</a>
+                    </div>
+                </div>
+                
+                <!-- Repair 5 -->
+                <div class="col-md-4 mb-4">
+                    <div class="repair-item animate__animated animate__fadeInUp animate__delay-1s">
+                        <div class="repair-icon">
+                            <i class="fas fa-wifi"></i>
+                        </div>
+                        <h3>Network Troubleshooting</h3>
+                        <p>Resolved connectivity issues, configured routers, and optimized network performance for home and business clients.</p>
+                        <a href="https://support.microsoft.com/en-us/windows/fix-network-connection-issues-in-windows-166ad76c-0b5c-6552-2583-5b392f4583ee" 
+                           class="btn btn-sm btn-outline-primary mt-2" target="_blank">Troubleshooting Tips</a>
+                    </div>
+                </div>
+                
+                <!-- Repair 6 -->
+                <div class="col-md-4 mb-4">
+                    <div class="repair-item animate__animated animate__fadeInUp animate__delay-2s">
+                        <div class="repair-icon">
+                            <i class="fas fa-tools"></i>
+                        </div>
+                        <h3>Hardware Diagnostics</h3>
+                        <p>Performed comprehensive hardware diagnostics to identify failing components and recommend cost-effective solutions.</p>
+                        <a href="https://support.hp.com/us-en/document/c04755521" 
+                           class="btn btn-sm btn-outline-primary mt-2" target="_blank">Diagnostic Tools</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="py-5 text-center" style="background-color: var(--primary-color); color: white;">
+        <div class="container">
+            <h2 class="mb-4 animate__animated animate__fadeIn">Need IT Solutions or Repairs?</h2>
+            <p class="lead mb-4 animate__animated animate__fadeIn animate__delay-1s">I provide professional services for both development projects and computer maintenance.</p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-social-links">
+                <a href="https://web.facebook.com/thabo.khosi.146" target="_blank" class="hvr-bob"><i
+                        class="fab fa-facebook-f"></i></a>
+                <a href="https://wa.me/26663210786" target="_blank" class="hvr-bob"><i class="fab fa-whatsapp"></i></a>
+                <a href="https://www.linkedin.com/in/bafokeng-khoali-5933351b1/" target="_blank" class="hvr-bob"><i
+                        class="fab fa-linkedin-in"></i></a>
+                <a href="mailto:khoalibafokeng6@gmail.com" class="hvr-bob"><i class="fas fa-envelope"></i></a>
+            </div>
+            <p>Ready to collaborate on your next project or discuss opportunities.</p>
+            <p class="copyright">&copy; <span id="year"></span> Bafokeng Khoali. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Custom JavaScript -->
+    <script>
+        // Set current year in footer
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        // Navbar scroll effect
+        window.addEventListener('scroll', function () {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 100) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    // Close mobile menu if open
+                    const navbarToggler = document.querySelector('.navbar-toggler');
+                    const navbarNav = document.querySelector('.navbar-collapse');
+                    if (navbarToggler && !navbarToggler.classList.contains('collapsed')) {
+                        navbarToggler.click();
+                    }
+
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 70,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Animation on scroll
+        function animateOnScroll() {
+            const elements = document.querySelectorAll('.animate__animated');
+            
+            elements.forEach(element => {
+                const elementPosition = element.getBoundingClientRect().top;
+                const windowHeight = window.innerHeight;
+                
+                if (elementPosition < windowHeight - 100) {
+                    const animationClass = element.classList[1];
+                    element.classList.add(animationClass);
+                }
+            });
+        }
+
+        // Initialize animations on load
+        window.addEventListener('load', function() {
+            animateOnScroll();
+        });
+
+        // Animate on scroll
+        window.addEventListener('scroll', animateOnScroll);
+
+        // Add hover effects to portfolio items
+        const portfolioItems = document.querySelectorAll('.portfolio-item');
+        portfolioItems.forEach(item => {
+            item.addEventListener('mouseenter', function() {
+                this.classList.add('animate__pulse');
+            });
+            item.addEventListener('mouseleave', function() {
+                this.classList.remove('animate__pulse');
+            });
+        });
+    </script>
+</body>
+</html>

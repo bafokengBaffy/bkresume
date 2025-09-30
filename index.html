@@ -121,7 +121,7 @@
             scroll-behavior: smooth;
         }
 
-        /* Navigation */
+        /* Enhanced Navigation */
         .navbar {
             background: rgba(255, 255, 255, 0.98) !important;
             box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
@@ -141,22 +141,39 @@
             font-size: 1.4rem;
             color: var(--primary-color) !important;
             white-space: nowrap;
+            display: flex;
+            align-items: center;
+        }
+
+        .navbar-brand i {
+            margin-right: 8px;
+            font-size: 1.6rem;
         }
 
         .navbar-nav {
             flex-wrap: wrap;
             justify-content: center;
+            align-items: center;
         }
 
         .nav-link {
             font-weight: 500;
-            padding: 0.4rem 0.8rem !important;
+            padding: 0.5rem 0.8rem !important;
             margin: 0 0.1rem;
             position: relative;
             color: var(--secondary-color) !important;
             transition: all 0.3s ease;
             font-size: 0.9rem;
             white-space: nowrap;
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-link i {
+            margin-right: 6px;
+            font-size: 0.9rem;
+            width: 16px;
+            text-align: center;
         }
 
         .nav-link::before {
@@ -180,6 +197,48 @@
 
         .nav-link.active::before {
             width: 100%;
+        }
+
+        /* Dropdown Styles */
+        .dropdown-menu {
+            border: none;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            padding: 0.5rem 0;
+            margin-top: 0.5rem;
+            background: rgba(255, 255, 255, 0.98);
+            backdrop-filter: blur(10px);
+        }
+
+        .dropdown-item {
+            padding: 0.7rem 1.5rem;
+            font-weight: 500;
+            color: var(--secondary-color);
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+        }
+
+        .dropdown-item i {
+            margin-right: 8px;
+            width: 16px;
+            text-align: center;
+            color: var(--primary-color);
+        }
+
+        .dropdown-item:hover {
+            background: rgba(108, 92, 231, 0.1);
+            color: var(--primary-color);
+            transform: translateX(5px);
+        }
+
+        .dropdown-toggle::after {
+            margin-left: 6px;
+            transition: transform 0.3s ease;
+        }
+
+        .dropdown.show .dropdown-toggle::after {
+            transform: rotate(180deg);
         }
 
         .navbar-toggler {
@@ -236,18 +295,31 @@
                 border-radius: 0 0 10px 10px;
                 box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
                 margin-top: 0.5rem;
+                backdrop-filter: blur(10px);
             }
 
             .nav-link {
-                padding: 0.6rem 1rem !important;
+                padding: 0.7rem 1rem !important;
                 margin: 0.1rem 0;
-                text-align: center;
+                text-align: left;
                 border-radius: 5px;
                 transition: all 0.3s ease;
+                justify-content: flex-start;
             }
 
             .nav-link:hover {
                 background: rgba(108, 92, 231, 0.1);
+            }
+
+            .dropdown-menu {
+                box-shadow: none;
+                border-radius: 5px;
+                margin: 0.5rem 0;
+                background: rgba(248, 249, 250, 0.9);
+            }
+
+            .dropdown-item {
+                padding: 0.6rem 1.2rem;
             }
         }
 
@@ -1174,12 +1246,12 @@
         /* Responsive Adjustments */
         @media (max-width: 1199px) {
             .navbar-nav {
-                text-align: center;
+                text-align: left;
             }
 
             .nav-link {
                 font-size: 0.95rem;
-                padding: 0.5rem 0.8rem !important;
+                padding: 0.6rem 0.8rem !important;
             }
         }
 
@@ -1254,7 +1326,7 @@
 
             .nav-link {
                 font-size: 0.9rem;
-                padding: 0.4rem 0.7rem !important;
+                padding: 0.5rem 0.7rem !important;
             }
         }
 
@@ -1302,19 +1374,19 @@
 
             .nav-link {
                 font-size: 0.85rem;
-                padding: 0.35rem 0.6rem !important;
+                padding: 0.4rem 0.6rem !important;
             }
         }
 
         @media (max-width: 480px) {
             .navbar-nav {
                 flex-direction: column;
-                align-items: center;
+                align-items: flex-start;
             }
 
             .nav-link {
                 width: 100%;
-                text-align: center;
+                text-align: left;
                 margin: 0.1rem 0;
             }
         }
@@ -1322,10 +1394,12 @@
 </head>
 
 <body data-bs-spy="scroll" data-bs-target="#navbar" data-bs-offset="100">
-    <!-- Navigation -->
+    <!-- Enhanced Navigation -->
     <nav id="navbar" class="navbar navbar-expand-lg navbar-light fixed-top">
         <div class="container">
-            <a class="navbar-brand hvr-buzz" href="#home">Bafokeng Khoali</a>
+            <a class="navbar-brand hvr-buzz" href="#home">
+                <i class="fas fa-user-tie"></i> Bafokeng Khoali
+            </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
                 aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -1333,40 +1407,68 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <a class="nav-link hvr-underline-from-center" href="#home">Home</a>
+                        <a class="nav-link hvr-underline-from-center" href="#home">
+                            <i class="fas fa-home"></i> Home
+                        </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link hvr-underline-from-center" href="#about">About</a>
+                        <a class="nav-link hvr-underline-from-center" href="#about">
+                            <i class="fas fa-user"></i> About
+                        </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link hvr-underline-from-center" href="#experience">Experience</a>
+                        <a class="nav-link hvr-underline-from-center" href="#experience">
+                            <i class="fas fa-briefcase"></i> Experience
+                        </a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle hvr-underline-from-center" href="#" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="fas fa-graduation-cap"></i> Education
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#education">
+                                    <i class="fas fa-university"></i> Academic Background
+                                </a></li>
+                            <li><a class="dropdown-item" href="#certifications">
+                                    <i class="fas fa-certificate"></i> Certifications
+                                </a></li>
+                            <li><a class="dropdown-item" href="#training">
+                                    <i class="fas fa-laptop-code"></i> Professional Training
+                                </a></li>
+                            <li><a class="dropdown-item" href="#awards">
+                                    <i class="fas fa-trophy"></i> Awards & Honors
+                                </a></li>
+                        </ul>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link hvr-underline-from-center" href="#education">Education</a>
+                        <a class="nav-link hvr-underline-from-center" href="#skills">
+                            <i class="fas fa-code"></i> Skills
+                        </a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link hvr-underline-from-center" href="#skills">Skills</a>
+                        <a class="nav-link hvr-underline-from-center" href="#projects">
+                            <i class="fas fa-project-diagram"></i> Projects
+                        </a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle hvr-underline-from-center" href="#" role="button"
+                            data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="fas fa-users"></i> Professional
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="#affiliations">
+                                    <i class="fas fa-handshake"></i> Affiliations
+                                </a></li>
+                            <li><a class="dropdown-item" href="#references">
+                                    <i class="fas fa-comments"></i> References
+                                </a></li>
+                        </ul>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link hvr-underline-from-center" href="#projects">Projects</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link hvr-underline-from-center" href="#certifications">Certifications</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link hvr-underline-from-center" href="#awards">Awards</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link hvr-underline-from-center" href="#training">Training</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link hvr-underline-from-center" href="#affiliations">Affiliations</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link hvr-underline-from-center" href="#interests">Interests</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link hvr-underline-from-center" href="#references">References</a>
+                        <a class="nav-link hvr-underline-from-center" href="#interests">
+                            <i class="fas fa-heart"></i> Interests
+                        </a>
                     </li>
                 </ul>
             </div>
@@ -1408,6 +1510,7 @@
         </div>
     </header>
 
+    <!-- Rest of your sections remain exactly the same -->
     <!-- About Section -->
     <section id="about">
         <div class="container">
@@ -1921,7 +2024,8 @@
                         <h3 class="certification-title">Professional Curriculum Vitae</h3>
                         <div class="certification-date">2025</div>
                         <p class="certification-description">
-                            Comprehensive professional CV detailing my experience, skills, education, and achievements in
+                            Comprehensive professional CV detailing my experience, skills, education, and achievements
+                            in
                             AI, IoT development, and information technology.
                         </p>
                         <div class="certification-links">
@@ -1943,7 +2047,8 @@
                         <h3 class="certification-title">Identification Document</h3>
                         <div class="certification-date">Verified</div>
                         <p class="certification-description">
-                            Official identification document for verification purposes, confirming my identity and personal
+                            Official identification document for verification purposes, confirming my identity and
+                            personal
                             details.
                         </p>
                         <div class="certification-links">
@@ -1965,7 +2070,8 @@
                         <h3 class="certification-title">Academic Qualifications</h3>
                         <div class="certification-date">2020-2025</div>
                         <p class="certification-description">
-                            Comprehensive document showcasing all academic qualifications including Bachelor's degree in IT,
+                            Comprehensive document showcasing all academic qualifications including Bachelor's degree in
+                            IT,
                             Diploma in ICT, and relevant certifications.
                         </p>
                         <div class="certification-links">
@@ -1981,14 +2087,14 @@
 
 
 
-            <!-- View All Certifications Button -->
-            <div class="text-center mt-5">
-                <a href="certifications.html" class="btn btn-primary btn-lg"
-                    style="background: var(--primary-color); border: none; padding: 12px 30px; font-weight: 500;">
-                    <i class="fas fa-folder-open me-2"></i> View All Certified Documents
-                </a>
+                <!-- View All Certifications Button -->
+                <div class="text-center mt-5">
+                    <a href="certifications.html" class="btn btn-primary btn-lg"
+                        style="background: var(--primary-color); border: none; padding: 12px 30px; font-weight: 500;">
+                        <i class="fas fa-folder-open me-2"></i> View All Certified Documents
+                    </a>
+                </div>
             </div>
-        </div>
     </section>
 
     <!-- Awards Section -->
@@ -2218,7 +2324,8 @@
                     <h3 class="reference-name">Mr. Mpho Takalimane</h3>
                     <div class="reference-position">Lecturer</div>
                     <div class="reference-organization">Limkokwing University of Creative Technology</div>
-                    <p>Provided academic guidance and instruction during Bachelor's degree program in Information Technology. Supported development of technical skills and project implementation.</p>
+                    <p>Provided academic guidance and instruction during Bachelor's degree program in Information
+                        Technology. Supported development of technical skills and project implementation.</p>
                     <div class="reference-contact">
                         <p><i class="fas fa-phone"></i> (+266) 5776 1066</p>
                         <p><i class="fas fa-university"></i> Limkokwing University</p>
@@ -2232,7 +2339,8 @@
                     <h3 class="reference-name">Mr. Ts'epo Mofolo</h3>
                     <div class="reference-position">Lecturer</div>
                     <div class="reference-organization">Limkokwing University of Creative Technology</div>
-                    <p>Mentored during Information Technology program and provided guidance on technical projects and career development in the IT field.</p>
+                    <p>Mentored during Information Technology program and provided guidance on technical projects and
+                        career development in the IT field.</p>
                     <div class="reference-contact">
                         <p><i class="fas fa-phone"></i> (+266) 5788 5371</p>
                         <p><i class="fas fa-university"></i> Limkokwing University</p>
@@ -2246,7 +2354,8 @@
                     <h3 class="reference-name">Mr. Molapo</h3>
                     <div class="reference-position">Lecturer</div>
                     <div class="reference-organization">Institute of Development Management</div>
-                    <p>Provided instruction and guidance during Diploma in Information and Communication Technology program. Supported development of foundational IT skills and practical applications.</p>
+                    <p>Provided instruction and guidance during Diploma in Information and Communication Technology
+                        program. Supported development of foundational IT skills and practical applications.</p>
                     <div class="reference-contact">
                         <p><i class="fas fa-phone"></i> (+266) 5874 2350</p>
                         <p><i class="fas fa-university"></i> Institute of Development Management</p>

@@ -2324,502 +2324,502 @@ body {
     <!-- Custom JavaScript -->
     <script>
       // Performance-optimized JavaScript for Portfolio Website
-        (function () {
-            'use strict';
+(function() {
+    'use strict';
 
-            // Configuration
-            const CONFIG = {
-                scrollOffset: 70,
-                animationThreshold: 100,
-                scrollThrottle: 100,
-                resizeThrottle: 250
+    // Configuration
+    const CONFIG = {
+        scrollOffset: 70,
+        animationThreshold: 100,
+        scrollThrottle: 100,
+        resizeThrottle: 250
+    };
+
+    // State management
+    const state = {
+        scrollTimeout: null,
+        resizeTimeout: null,
+        isMobile: window.innerWidth < 992,
+        currentSection: '',
+        animationsTriggered: new Set()
+    };
+
+    // DOM Elements cache
+    const elements = {
+        year: document.getElementById('year'),
+        navbar: document.querySelector('.navbar'),
+        backToTop: document.querySelector('.back-to-top'),
+        navLinks: document.querySelectorAll('.nav-link'),
+        sections: document.querySelectorAll('section'),
+        profileImg: document.querySelector('.profile-img'),
+        skillBars: document.querySelectorAll('.skill-progress'),
+        animateElements: document.querySelectorAll('.timeline-item, .education-item, .skill-category, .interest-item, .project-card, .award-item, .training-item, .affiliation-item, .reference-item')
+    };
+
+    // Utility functions
+    const utils = {
+        // Throttle function for performance
+        throttle(func, limit) {
+            let inThrottle;
+            return function() {
+                const args = arguments;
+                const context = this;
+                if (!inThrottle) {
+                    func.apply(context, args);
+                    inThrottle = true;
+                    setTimeout(() => inThrottle = false, limit);
+                }
             };
+        },
 
-            // State management
-            const state = {
-                scrollTimeout: null,
-                resizeTimeout: null,
-                isMobile: window.innerWidth < 992,
-                currentSection: '',
-                animationsTriggered: new Set()
+        // Debounce function for performance
+        debounce(func, wait, immediate) {
+            let timeout;
+            return function() {
+                const context = this;
+                const args = arguments;
+                const later = function() {
+                    timeout = null;
+                    if (!immediate) func.apply(context, args);
+                };
+                const callNow = immediate && !timeout;
+                clearTimeout(timeout);
+                timeout = setTimeout(later, wait);
+                if (callNow) func.apply(context, args);
             };
+        },
 
-            // DOM Elements cache
-            const elements = {
-                year: document.getElementById('year'),
-                navbar: document.querySelector('.navbar'),
-                backToTop: document.querySelector('.back-to-top'),
-                navLinks: document.querySelectorAll('.nav-link'),
-                sections: document.querySelectorAll('section'),
-                profileImg: document.querySelector('.profile-img'),
-                skillBars: document.querySelectorAll('.skill-progress'),
-                animateElements: document.querySelectorAll('.timeline-item, .education-item, .skill-category, .interest-item, .project-card, .award-item, .training-item, .affiliation-item, .reference-item')
-            };
+        // Check if element is in viewport
+        isInViewport(element, offset = 0) {
+            const rect = element.getBoundingClientRect();
+            return (
+                rect.top <= (window.innerHeight || document.documentElement.clientHeight) - offset &&
+                rect.bottom >= 0
+            );
+        },
 
-            // Utility functions
-            const utils = {
-                // Throttle function for performance
-                throttle(func, limit) {
-                    let inThrottle;
-                    return function () {
-                        const args = arguments;
-                        const context = this;
-                        if (!inThrottle) {
-                            func.apply(context, args);
-                            inThrottle = true;
-                            setTimeout(() => inThrottle = false, limit);
-                        }
-                    };
-                },
+        // Smooth scroll to element
+        smoothScrollTo(targetElement, duration = 800) {
+            const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - CONFIG.scrollOffset;
+            const startPosition = window.pageYOffset;
+            const distance = targetPosition - startPosition;
+            let startTime = null;
 
-                // Debounce function for performance
-                debounce(func, wait, immediate) {
-                    let timeout;
-                    return function () {
-                        const context = this;
-                        const args = arguments;
-                        const later = function () {
-                            timeout = null;
-                            if (!immediate) func.apply(context, args);
-                        };
-                        const callNow = immediate && !timeout;
-                        clearTimeout(timeout);
-                        timeout = setTimeout(later, wait);
-                        if (callNow) func.apply(context, args);
-                    };
-                },
+            function animation(currentTime) {
+                if (startTime === null) startTime = currentTime;
+                const timeElapsed = currentTime - startTime;
+                const progress = Math.min(timeElapsed / duration, 1);
+                const ease = utils.easing(progress);
 
-                // Check if element is in viewport
-                isInViewport(element, offset = 0) {
-                    const rect = element.getBoundingClientRect();
-                    return (
-                        rect.top <= (window.innerHeight || document.documentElement.clientHeight) - offset &&
-                        rect.bottom >= 0
-                    );
-                },
+                window.scrollTo(0, startPosition + (distance * ease));
 
-                // Smooth scroll to element
-                smoothScrollTo(targetElement, duration = 800) {
-                    const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - CONFIG.scrollOffset;
-                    const startPosition = window.pageYOffset;
-                    const distance = targetPosition - startPosition;
-                    let startTime = null;
-
-                    function animation(currentTime) {
-                        if (startTime === null) startTime = currentTime;
-                        const timeElapsed = currentTime - startTime;
-                        const progress = Math.min(timeElapsed / duration, 1);
-                        const ease = utils.easing(progress);
-
-                        window.scrollTo(0, startPosition + (distance * ease));
-
-                        if (timeElapsed < duration) {
-                            requestAnimationFrame(animation);
-                        }
-                    }
-
+                if (timeElapsed < duration) {
                     requestAnimationFrame(animation);
-                },
-
-                // Easing function for smooth animations
-                easing(t) {
-                    return t < 0.5 ? 2 * t * t : -1 + (4 - 2 * t) * t;
-                },
-
-                // Add animation classes safely
-                addAnimationClass(element, animationClass) {
-                    if (!element.classList.contains(animationClass)) {
-                        element.classList.add('animate__animated', animationClass);
-                    }
-                },
-
-                // Remove animation classes safely
-                removeAnimationClass(element, animationClass) {
-                    element.classList.remove('animate__animated', animationClass);
                 }
-            };
-
-            // Core functionality
-            const app = {
-                // Initialize the application
-                init() {
-                    this.setCurrentYear();
-                    this.setupEventListeners();
-                    this.initAnimations();
-                    this.setupNavigation();
-                    this.setupIntersectionObserver();
-                    console.log('Portfolio website initialized with performance optimizations');
-                },
-
-                // Set current year in footer
-                setCurrentYear() {
-                    if (elements.year) {
-                        elements.year.textContent = new Date().getFullYear();
-                    }
-                },
-
-                // Setup all event listeners
-                setupEventListeners() {
-                    // Throttled scroll event
-                    window.addEventListener('scroll', utils.throttle(() => {
-                        this.handleScroll();
-                    }, CONFIG.scrollThrottle), { passive: true });
-
-                    // Throttled resize event
-                    window.addEventListener('resize', utils.debounce(() => {
-                        this.handleResize();
-                    }, CONFIG.resizeThrottle));
-
-                    // Back to top click
-                    if (elements.backToTop) {
-                        elements.backToTop.addEventListener('click', (e) => {
-                            e.preventDefault();
-                            this.scrollToTop();
-                        });
-                    }
-
-                    // Profile image hover effects
-                    if (elements.profileImg) {
-                        elements.profileImg.addEventListener('mouseenter', () => {
-                            utils.addAnimationClass(elements.profileImg, 'animate__pulse');
-                        });
-                        elements.profileImg.addEventListener('mouseleave', () => {
-                            utils.removeAnimationClass(elements.profileImg, 'animate__pulse');
-                        });
-                        elements.profileImg.addEventListener('animationend', () => {
-                            utils.removeAnimationClass(elements.profileImg, 'animate__pulse');
-                        });
-                    }
-
-                    // Social links animations
-                    this.setupSocialLinksAnimations();
-
-                    // Section title animations
-                    this.setupSectionTitleAnimations();
-                },
-
-                // Handle scroll events
-                handleScroll() {
-                    this.updateNavbar();
-                    this.updateBackToTop();
-                    this.updateActiveSection();
-                },
-
-                // Handle resize events
-                handleResize() {
-                    state.isMobile = window.innerWidth < 992;
-                    // Re-initialize animations on resize
-                    this.initAnimations();
-                },
-
-                // Update navbar on scroll
-                updateNavbar() {
-                    if (elements.navbar) {
-                        if (window.scrollY > 100) {
-                            elements.navbar.classList.add('scrolled');
-                        } else {
-                            elements.navbar.classList.remove('scrolled');
-                        }
-                    }
-                },
-
-                // Update back to top button
-                updateBackToTop() {
-                    if (elements.backToTop) {
-                        if (window.scrollY > 300) {
-                            elements.backToTop.classList.add('active');
-                        } else {
-                            elements.backToTop.classList.remove('active');
-                        }
-                    }
-                },
-
-                // Update active section in navigation
-                updateActiveSection() {
-                    let current = '';
-
-                    elements.sections.forEach(section => {
-                        const sectionTop = section.offsetTop;
-                        const sectionHeight = section.clientHeight;
-
-                        if (window.pageYOffset >= (sectionTop - 150)) {
-                            current = section.getAttribute('id');
-                        }
-                    });
-
-                    if (current !== state.currentSection) {
-                        state.currentSection = current;
-                        this.updateNavLinks(current);
-                    }
-                },
-
-                // Update navigation links active state
-                updateNavLinks(currentSection) {
-                    elements.navLinks.forEach(link => {
-                        link.classList.remove('active');
-                        const href = link.getAttribute('href');
-                        if (href === `#${currentSection}`) {
-                            link.classList.add('active');
-                        }
-                    });
-                },
-
-                // Setup smooth navigation
-                setupNavigation() {
-                    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                        anchor.addEventListener('click', (e) => {
-                            e.preventDefault();
-
-                            const targetId = anchor.getAttribute('href');
-                            if (targetId === '#') return;
-
-                            const targetElement = document.querySelector(targetId);
-                            if (targetElement) {
-                                this.handleNavigationClick(anchor, targetElement);
-                            }
-                        });
-                    });
-                },
-
-                // Handle navigation click
-                handleNavigationClick(anchor, targetElement) {
-                    // Close mobile menu if open
-                    this.closeMobileMenu();
-
-                    // Smooth scroll to target
-                    utils.smoothScrollTo(targetElement);
-
-                    // Update URL without page reload
-                    history.pushState(null, null, `#${targetElement.id}`);
-
-                    // Update active nav link
-                    this.setActiveNavLink(anchor);
-                },
-
-                // Close mobile menu
-                closeMobileMenu() {
-                    const navbarToggler = document.querySelector('.navbar-toggler');
-                    const navbarNav = document.querySelector('.navbar-collapse');
-
-                    if (navbarToggler && !navbarToggler.classList.contains('collapsed') && state.isMobile) {
-                        navbarToggler.click();
-                    }
-                },
-
-                // Set active navigation link
-                setActiveNavLink(activeLink) {
-                    elements.navLinks.forEach(link => {
-                        link.classList.remove('active');
-                    });
-                    activeLink.classList.add('active');
-                },
-
-                // Scroll to top of page
-                scrollToTop() {
-                    window.scrollTo({
-                        top: 0,
-                        behavior: 'smooth'
-                    });
-                },
-
-                // Initialize animations
-                initAnimations() {
-                    // Animate skill bars
-                    this.animateSkillBars();
-
-                    // Initial check for elements in viewport
-                    this.checkElementsInViewport();
-                },
-
-                // Animate skill bars
-                animateSkillBars() {
-                    elements.skillBars.forEach(bar => {
-                        const width = bar.style.width;
-                        bar.style.width = '0';
-                        setTimeout(() => {
-                            bar.style.width = width;
-                        }, 100);
-                    });
-                },
-
-                // Check elements in viewport for animations
-                checkElementsInViewport() {
-                    elements.animateElements.forEach(element => {
-                        if (!state.animationsTriggered.has(element) &&
-                            utils.isInViewport(element, CONFIG.animationThreshold)) {
-                            this.triggerElementAnimation(element);
-                        }
-                    });
-                },
-
-                // Trigger element animation
-                triggerElementAnimation(element) {
-                    element.classList.add('visible');
-                    state.animationsTriggered.add(element);
-                },
-
-                // Setup social links animations
-                setupSocialLinksAnimations() {
-                    const socialLinks = document.querySelectorAll('.social-links a, .footer-social-links a');
-                    socialLinks.forEach(link => {
-                        link.addEventListener('mouseenter', () => {
-                            utils.addAnimationClass(link, 'animate__rubberBand');
-                        });
-                        link.addEventListener('mouseleave', () => {
-                            utils.removeAnimationClass(link, 'animate__rubberBand');
-                        });
-                        link.addEventListener('animationend', () => {
-                            utils.removeAnimationClass(link, 'animate__rubberBand');
-                        });
-                    });
-                },
-
-                // Setup section title animations
-                setupSectionTitleAnimations() {
-                    const sectionTitles = document.querySelectorAll('.section-title h2');
-                    sectionTitles.forEach(title => {
-                        title.addEventListener('mouseenter', () => {
-                            utils.addAnimationClass(title, 'animate__swing');
-                        });
-                        title.addEventListener('animationend', () => {
-                            utils.removeAnimationClass(title, 'animate__swing');
-                        });
-                    });
-                },
-
-                // Setup Intersection Observer for animations
-                setupIntersectionObserver() {
-                    const observerOptions = {
-                        threshold: 0.1,
-                        rootMargin: '0px 0px -50px 0px'
-                    };
-
-                    const observer = new IntersectionObserver((entries) => {
-                        entries.forEach(entry => {
-                            if (entry.isIntersecting) {
-                                entry.target.classList.add('section-scroll-in');
-                                observer.unobserve(entry.target);
-                            }
-                        });
-                    }, observerOptions);
-
-                    // Observe sections
-                    elements.sections.forEach(section => {
-                        observer.observe(section);
-                    });
-
-                    // Observe animate elements
-                    const animationObserver = new IntersectionObserver((entries) => {
-                        entries.forEach(entry => {
-                            if (entry.isIntersecting) {
-                                this.triggerElementAnimation(entry.target);
-                                animationObserver.unobserve(entry.target);
-                            }
-                        });
-                    }, {
-                        threshold: 0.1,
-                        rootMargin: '0px 0px -20px 0px'
-                    });
-
-                    elements.animateElements.forEach(element => {
-                        animationObserver.observe(element);
-                    });
-                },
-
-                // Timeline item hover effects
-                setupTimelineHoverEffects() {
-                    const timelineItems = document.querySelectorAll('.timeline-item');
-                    timelineItems.forEach(item => {
-                        item.addEventListener('mouseenter', () => {
-                            item.querySelector('.timeline-content').classList.add('hvr-glow');
-                        });
-                        item.addEventListener('mouseleave', () => {
-                            item.querySelector('.timeline-content').classList.remove('hvr-glow');
-                        });
-                    });
-                }
-            };
-
-            // Initialize the app when DOM is ready
-            if (document.readyState === 'loading') {
-                document.addEventListener('DOMContentLoaded', () => app.init());
-            } else {
-                app.init();
             }
 
-            // Export for global access if needed
-            window.portfolioApp = app;
+            requestAnimationFrame(animation);
+        },
 
-        })();
+        // Easing function for smooth animations
+        easing(t) {
+            return t < 0.5 ? 2 * t * t : -1 + (4 - 2 * t) * t;
+        },
 
-        // Additional performance optimizations
-        // Preload critical resources
-        (function () {
-            // Preload images that are above the fold
-            const criticalImages = [
-                'img/profile.jpg'
-            ];
+        // Add animation classes safely
+        addAnimationClass(element, animationClass) {
+            if (!element.classList.contains(animationClass)) {
+                element.classList.add('animate__animated', animationClass);
+            }
+        },
 
-            criticalImages.forEach(src => {
-                const img = new Image();
-                img.src = src;
-            });
+        // Remove animation classes safely
+        removeAnimationClass(element, animationClass) {
+            element.classList.remove('animate__animated', animationClass);
+        }
+    };
 
-            // Load non-critical CSS after page load
-            function loadNonCriticalCSS() {
-                const links = document.querySelectorAll('link[rel="stylesheet"]');
-                links.forEach(link => {
-                    if (link.media === 'print') {
-                        link.media = 'all';
-                    }
+    // Core functionality
+    const app = {
+        // Initialize the application
+        init() {
+            this.setCurrentYear();
+            this.setupEventListeners();
+            this.initAnimations();
+            this.setupNavigation();
+            this.setupIntersectionObserver();
+            console.log('Portfolio website initialized with performance optimizations');
+        },
+
+        // Set current year in footer
+        setCurrentYear() {
+            if (elements.year) {
+                elements.year.textContent = new Date().getFullYear();
+            }
+        },
+
+        // Setup all event listeners
+        setupEventListeners() {
+            // Throttled scroll event
+            window.addEventListener('scroll', utils.throttle(() => {
+                this.handleScroll();
+            }, CONFIG.scrollThrottle), { passive: true });
+
+            // Throttled resize event
+            window.addEventListener('resize', utils.debounce(() => {
+                this.handleResize();
+            }, CONFIG.resizeThrottle));
+
+            // Back to top click
+            if (elements.backToTop) {
+                elements.backToTop.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    this.scrollToTop();
                 });
             }
 
-            // RequestIdleCallback polyfill
-            window.requestIdleCallback = window.requestIdleCallback || function (cb) {
-                const start = Date.now();
-                return setTimeout(function () {
-                    cb({
-                        didTimeout: false,
-                        timeRemaining: function () {
-                            return Math.max(0, 50 - (Date.now() - start));
-                        }
-                    });
-                }, 1);
+            // Profile image hover effects
+            if (elements.profileImg) {
+                elements.profileImg.addEventListener('mouseenter', () => {
+                    utils.addAnimationClass(elements.profileImg, 'animate__pulse');
+                });
+                elements.profileImg.addEventListener('mouseleave', () => {
+                    utils.removeAnimationClass(elements.profileImg, 'animate__pulse');
+                });
+                elements.profileImg.addEventListener('animationend', () => {
+                    utils.removeAnimationClass(elements.profileImg, 'animate__pulse');
+                });
+            }
+
+            // Social links animations
+            this.setupSocialLinksAnimations();
+
+            // Section title animations
+            this.setupSectionTitleAnimations();
+        },
+
+        // Handle scroll events
+        handleScroll() {
+            this.updateNavbar();
+            this.updateBackToTop();
+            this.updateActiveSection();
+        },
+
+        // Handle resize events
+        handleResize() {
+            state.isMobile = window.innerWidth < 992;
+            // Re-initialize animations on resize
+            this.initAnimations();
+        },
+
+        // Update navbar on scroll
+        updateNavbar() {
+            if (elements.navbar) {
+                if (window.scrollY > 100) {
+                    elements.navbar.classList.add('scrolled');
+                } else {
+                    elements.navbar.classList.remove('scrolled');
+                }
+            }
+        },
+
+        // Update back to top button
+        updateBackToTop() {
+            if (elements.backToTop) {
+                if (window.scrollY > 300) {
+                    elements.backToTop.classList.add('active');
+                } else {
+                    elements.backToTop.classList.remove('active');
+                }
+            }
+        },
+
+        // Update active section in navigation
+        updateActiveSection() {
+            let current = '';
+
+            elements.sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+
+                if (window.pageYOffset >= (sectionTop - 150)) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            if (current !== state.currentSection) {
+                state.currentSection = current;
+                this.updateNavLinks(current);
+            }
+        },
+
+        // Update navigation links active state
+        updateNavLinks(currentSection) {
+            elements.navLinks.forEach(link => {
+                link.classList.remove('active');
+                const href = link.getAttribute('href');
+                if (href === `#${currentSection}`) {
+                    link.classList.add('active');
+                }
+            });
+        },
+
+        // Setup smooth navigation
+        setupNavigation() {
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', (e) => {
+                    e.preventDefault();
+
+                    const targetId = anchor.getAttribute('href');
+                    if (targetId === '#') return;
+
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        this.handleNavigationClick(anchor, targetElement);
+                    }
+                });
+            });
+        },
+
+        // Handle navigation click
+        handleNavigationClick(anchor, targetElement) {
+            // Close mobile menu if open
+            this.closeMobileMenu();
+
+            // Smooth scroll to target
+            utils.smoothScrollTo(targetElement);
+
+            // Update URL without page reload
+            history.pushState(null, null, `#${targetElement.id}`);
+
+            // Update active nav link
+            this.setActiveNavLink(anchor);
+        },
+
+        // Close mobile menu
+        closeMobileMenu() {
+            const navbarToggler = document.querySelector('.navbar-toggler');
+            const navbarNav = document.querySelector('.navbar-collapse');
+
+            if (navbarToggler && !navbarToggler.classList.contains('collapsed') && state.isMobile) {
+                navbarToggler.click();
+            }
+        },
+
+        // Set active navigation link
+        setActiveNavLink(activeLink) {
+            elements.navLinks.forEach(link => {
+                link.classList.remove('active');
+            });
+            activeLink.classList.add('active');
+        },
+
+        // Scroll to top of page
+        scrollToTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        },
+
+        // Initialize animations
+        initAnimations() {
+            // Animate skill bars
+            this.animateSkillBars();
+
+            // Initial check for elements in viewport
+            this.checkElementsInViewport();
+        },
+
+        // Animate skill bars
+        animateSkillBars() {
+            elements.skillBars.forEach(bar => {
+                const width = bar.style.width;
+                bar.style.width = '0';
+                setTimeout(() => {
+                    bar.style.width = width;
+                }, 100);
+            });
+        },
+
+        // Check elements in viewport for animations
+        checkElementsInViewport() {
+            elements.animateElements.forEach(element => {
+                if (!state.animationsTriggered.has(element) &&
+                    utils.isInViewport(element, CONFIG.animationThreshold)) {
+                    this.triggerElementAnimation(element);
+                }
+            });
+        },
+
+        // Trigger element animation
+        triggerElementAnimation(element) {
+            element.classList.add('visible');
+            state.animationsTriggered.add(element);
+        },
+
+        // Setup social links animations
+        setupSocialLinksAnimations() {
+            const socialLinks = document.querySelectorAll('.social-links a, .footer-social-links a');
+            socialLinks.forEach(link => {
+                link.addEventListener('mouseenter', () => {
+                    utils.addAnimationClass(link, 'animate__rubberBand');
+                });
+                link.addEventListener('mouseleave', () => {
+                    utils.removeAnimationClass(link, 'animate__rubberBand');
+                });
+                link.addEventListener('animationend', () => {
+                    utils.removeAnimationClass(link, 'animate__rubberBand');
+                });
+            });
+        },
+
+        // Setup section title animations
+        setupSectionTitleAnimations() {
+            const sectionTitles = document.querySelectorAll('.section-title h2');
+            sectionTitles.forEach(title => {
+                title.addEventListener('mouseenter', () => {
+                    utils.addAnimationClass(title, 'animate__swing');
+                });
+                title.addEventListener('animationend', () => {
+                    utils.removeAnimationClass(title, 'animate__swing');
+                });
+            });
+        },
+
+        // Setup Intersection Observer for animations
+        setupIntersectionObserver() {
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
             };
 
-            // Load non-critical resources when idle
-            if ('requestIdleCallback' in window) {
-                window.requestIdleCallback(loadNonCriticalCSS);
-            } else {
-                window.addEventListener('load', loadNonCriticalCSS);
-            }
-        })();
-
-        // Error handling and logging
-        window.addEventListener('error', function (e) {
-            console.error('Script error:', e.error);
-        });
-
-        // Performance monitoring
-        if ('performance' in window) {
-            window.addEventListener('load', function () {
-                setTimeout(function () {
-                    const perfData = performance.timing;
-                    const loadTime = perfData.loadEventEnd - perfData.navigationStart;
-                    console.log('Page load time:', loadTime + 'ms');
-
-                    // Send to analytics if available
-                    if (typeof gtag !== 'undefined') {
-                        gtag('event', 'timing_complete', {
-                            'name': 'load',
-                            'value': loadTime,
-                            'event_category': 'Load Performance'
-                        });
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('section-scroll-in');
+                        observer.unobserve(entry.target);
                     }
-                }, 0);
+                });
+            }, observerOptions);
+
+            // Observe sections
+            elements.sections.forEach(section => {
+                observer.observe(section);
+            });
+
+            // Observe animate elements
+            const animationObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        this.triggerElementAnimation(entry.target);
+                        animationObserver.unobserve(entry.target);
+                    }
+                });
+            }, {
+                threshold: 0.1,
+                rootMargin: '0px 0px -20px 0px'
+            });
+
+            elements.animateElements.forEach(element => {
+                animationObserver.observe(element);
+            });
+        },
+
+        // Timeline item hover effects
+        setupTimelineHoverEffects() {
+            const timelineItems = document.querySelectorAll('.timeline-item');
+            timelineItems.forEach(item => {
+                item.addEventListener('mouseenter', () => {
+                    item.querySelector('.timeline-content').classList.add('hvr-glow');
+                });
+                item.addEventListener('mouseleave', () => {
+                    item.querySelector('.timeline-content').classList.remove('hvr-glow');
+                });
             });
         }
+    };
+
+    // Initialize the app when DOM is ready
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', () => app.init());
+    } else {
+        app.init();
+    }
+
+    // Export for global access if needed
+    window.portfolioApp = app;
+
+})();
+
+// Additional performance optimizations
+// Preload critical resources
+(function() {
+    // Preload images that are above the fold
+    const criticalImages = [
+        'img/profile.jpg'
+    ];
+
+    criticalImages.forEach(src => {
+        const img = new Image();
+        img.src = src;
+    });
+
+    // Load non-critical CSS after page load
+    function loadNonCriticalCSS() {
+        const links = document.querySelectorAll('link[rel="stylesheet"]');
+        links.forEach(link => {
+            if (link.media === 'print') {
+                link.media = 'all';
+            }
+        });
+    }
+
+    // RequestIdleCallback polyfill
+    window.requestIdleCallback = window.requestIdleCallback || function(cb) {
+        const start = Date.now();
+        return setTimeout(function() {
+            cb({
+                didTimeout: false,
+                timeRemaining: function() {
+                    return Math.max(0, 50 - (Date.now() - start));
+                }
+            });
+        }, 1);
+    };
+
+    // Load non-critical resources when idle
+    if ('requestIdleCallback' in window) {
+        window.requestIdleCallback(loadNonCriticalCSS);
+    } else {
+        window.addEventListener('load', loadNonCriticalCSS);
+    }
+})();
+
+// Error handling and logging
+window.addEventListener('error', function(e) {
+    console.error('Script error:', e.error);
+});
+
+// Performance monitoring
+if ('performance' in window) {
+    window.addEventListener('load', function() {
+        setTimeout(function() {
+            const perfData = performance.timing;
+            const loadTime = perfData.loadEventEnd - perfData.navigationStart;
+            console.log('Page load time:', loadTime + 'ms');
+
+            // Send to analytics if available
+            if (typeof gtag !== 'undefined') {
+                gtag('event', 'timing_complete', {
+                    'name': 'load',
+                    'value': loadTime,
+                    'event_category': 'Load Performance'
+                });
+            }
+        }, 0);
+    });
+}
     </script>
 </body>
 

@@ -182,19 +182,51 @@
             .project-title {
                 font-size: 2rem;
             }
-            
+
             .project-subtitle {
                 font-size: 1rem;
             }
-            
+
             .screenshot-gallery {
                 grid-template-columns: 1fr;
             }
         }
     </style>
+
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-ZE4RTB3WFB"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'G-ZE4RTB3WFB');
+</script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    // Basic configuration
+    gtag('config', 'G-ZE4RTB3WFB');
+
+    // Optional: Track page views for SPA-like behavior
+    gtag('config', 'G-ZE4RTB3WFB', {
+        'page_title': document.title,
+        'page_location': window.location.href
+    });
+</script>
 </head>
 
 <body>
+
+    <!-- After the opening <body> tag -->
+    <noscript>
+        <iframe src="https://www.googletagmanager.com/ns.html?id=G-ZE4RTB3WFB" height="0" width="0"
+            style="display:none;visibility:hidden">
+        </iframe>
+    </noscript>
     <!-- Project Header -->
     <div class="project-header">
         <div class="container">
@@ -222,14 +254,14 @@
                 <section class="mb-5">
                     <h2 class="section-title">Project Overview</h2>
                     <p>
-                        The Loan Approval Prediction System is a comprehensive machine learning application designed to 
-                        predict loan approval decisions for financial institutions. The system analyzes applicant data 
-                        and provides instant predictions with explainable AI insights, helping both loan officers and 
+                        The Loan Approval Prediction System is a comprehensive machine learning application designed to
+                        predict loan approval decisions for financial institutions. The system analyzes applicant data
+                        and provides instant predictions with explainable AI insights, helping both loan officers and
                         applicants understand the decision-making process.
                     </p>
                     <p>
-                        Developed as part of my academic and professional exploration of machine learning applications 
-                        in finance, this project combines data science techniques with practical business requirements 
+                        Developed as part of my academic and professional exploration of machine learning applications
+                        in finance, this project combines data science techniques with practical business requirements
                         to create a tool that can significantly streamline the loan approval process.
                     </p>
                 </section>
@@ -245,7 +277,7 @@
                                 </div>
                                 <h3>Real-time Prediction</h3>
                                 <p>
-                                    Get instant loan approval predictions by submitting applicant information through 
+                                    Get instant loan approval predictions by submitting applicant information through
                                     an intuitive interface.
                                 </p>
                             </div>
@@ -257,7 +289,7 @@
                                 </div>
                                 <h3>Interactive Visualizations</h3>
                                 <p>
-                                    Explore data with dark-mode optimized charts that help visualize the prediction 
+                                    Explore data with dark-mode optimized charts that help visualize the prediction
                                     factors and applicant data.
                                 </p>
                             </div>
@@ -269,7 +301,7 @@
                                 </div>
                                 <h3>Feature Importance</h3>
                                 <p>
-                                    Understand the key decision factors behind predictions with detailed explanations 
+                                    Understand the key decision factors behind predictions with detailed explanations
                                     of how each feature impacts the outcome.
                                 </p>
                             </div>
@@ -281,7 +313,7 @@
                                 </div>
                                 <h3>Outlier Detection</h3>
                                 <p>
-                                    Identify unusual or potentially risky applications with built-in outlier detection 
+                                    Identify unusual or potentially risky applications with built-in outlier detection
                                     algorithms.
                                 </p>
                             </div>
@@ -293,12 +325,12 @@
                 <section class="mb-5">
                     <h2 class="section-title">Technical Implementation</h2>
                     <p>
-                        The system is built with a Python backend using Flask for the web framework. Machine learning 
-                        models were developed using scikit-learn, with extensive feature engineering and model 
+                        The system is built with a Python backend using Flask for the web framework. Machine learning
+                        models were developed using scikit-learn, with extensive feature engineering and model
                         selection processes to ensure accuracy and reliability.
                     </p>
                     <p>
-                        The frontend combines HTML, CSS, and JavaScript with Chart.js for visualizations. Data is 
+                        The frontend combines HTML, CSS, and JavaScript with Chart.js for visualizations. Data is
                         persisted in a MySQL database, with proper indexing and optimization for quick query responses.
                     </p>
                     <div class="mb-4">
@@ -321,9 +353,9 @@
             <div class="col-lg-4">
                 <!-- Project Image -->
                 <div class="sticky-top" style="top: 20px;">
-                    <img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1511&q=80" 
+                    <img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1511&q=80"
                          alt="Loan Prediction System" class="img-fluid project-image">
-                    
+
                     <!-- Project Details -->
                     <div class="card mb-4">
                         <div class="card-body">
@@ -370,15 +402,15 @@
             <h2 class="section-title">System Screenshots</h2>
             <div class="screenshot-gallery">
                 <div class="screenshot-item">
-                    <img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" 
+                    <img src="https://images.unsplash.com/photo-1554224155-6726b3ff858f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80"
                          alt="Dashboard View">
                 </div>
                 <div class="screenshot-item">
-                    <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" 
+                    <img src="https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80"
                          alt="Prediction Interface">
                 </div>
                 <div class="screenshot-item">
-                    <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" 
+                    <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80"
                          alt="Data Visualization">
                 </div>
             </div>
@@ -388,7 +420,7 @@
         <section class="my-5">
             <h2 class="section-title">Future Enhancements</h2>
             <p>
-                While the current system provides robust functionality, several enhancements are planned for future 
+                While the current system provides robust functionality, several enhancements are planned for future
                 versions:
             </p>
             <ul>

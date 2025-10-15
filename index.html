@@ -1417,10 +1417,43 @@
             }
         }
     </style>
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZE4RTB3WFB"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-ZE4RTB3WFB');
+    </script>
+
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        // Basic configuration
+        gtag('config', 'G-ZE4RTB3WFB');
+
+        // Optional: Track page views for SPA-like behavior
+        gtag('config', 'G-ZE4RTB3WFB', {
+            'page_title': document.title,
+            'page_location': window.location.href
+        });
+    </script>
 </head>
 
 
 <body data-bs-spy="scroll" data-bs-target="#navbar" data-bs-offset="100">
+
+    <!-- After the opening <body> tag -->
+    <noscript>
+        <iframe src="https://www.googletagmanager.com/ns.html?id=G-ZE4RTB3WFB" height="0" width="0"
+            style="display:none;visibility:hidden">
+        </iframe>
+    </noscript>
+
     <!-- Enhanced Navigation -->
     <nav id="navbar" class="navbar navbar-expand-lg navbar-light fixed-top">
         <div class="container">

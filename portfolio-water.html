@@ -191,19 +191,50 @@
             .project-title {
                 font-size: 2rem;
             }
-            
+
             .project-subtitle {
                 font-size: 1rem;
             }
-            
+
             .screenshot-gallery {
                 grid-template-columns: 1fr;
             }
         }
     </style>
+
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-ZE4RTB3WFB"></script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    gtag('config', 'G-ZE4RTB3WFB');
+</script>
+<script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+
+    // Basic configuration
+    gtag('config', 'G-ZE4RTB3WFB');
+
+    // Optional: Track page views for SPA-like behavior
+    gtag('config', 'G-ZE4RTB3WFB', {
+        'page_title': document.title,
+        'page_location': window.location.href
+    });
+</script>
 </head>
 
 <body>
+<!-- After the opening <body> tag -->
+<noscript>
+    <iframe src="https://www.googletagmanager.com/ns.html?id=G-ZE4RTB3WFB" height="0" width="0"
+        style="display:none;visibility:hidden">
+    </iframe>
+</noscript>
+
     <!-- Project Header -->
     <div class="project-header">
         <div class="container">
@@ -231,14 +262,14 @@
                 <section class="mb-5">
                     <h2 class="section-title">Project Overview</h2>
                     <p>
-                        The Smart Water Metering System is an innovative IoT solution designed to monitor water 
-                        consumption in real-time, detect leaks, and provide actionable insights through AI-powered 
-                        analytics. The system helps municipalities, businesses, and homeowners optimize water usage 
+                        The Smart Water Metering System is an innovative IoT solution designed to monitor water
+                        consumption in real-time, detect leaks, and provide actionable insights through AI-powered
+                        analytics. The system helps municipalities, businesses, and homeowners optimize water usage
                         and reduce waste.
                     </p>
                     <p>
-                        Developed as a response to water scarcity challenges, this project combines hardware sensors 
-                        with a mobile application and cloud-based analytics to create a comprehensive water management 
+                        Developed as a response to water scarcity challenges, this project combines hardware sensors
+                        with a mobile application and cloud-based analytics to create a comprehensive water management
                         solution.
                     </p>
                 </section>
@@ -254,7 +285,7 @@
                                 </div>
                                 <h3>Real-time Monitoring</h3>
                                 <p>
-                                    Continuously track water flow and consumption patterns with IoT sensors that 
+                                    Continuously track water flow and consumption patterns with IoT sensors that
                                     transmit data to the cloud.
                                 </p>
                             </div>
@@ -266,7 +297,7 @@
                                 </div>
                                 <h3>Leak Detection</h3>
                                 <p>
-                                    Receive instant alerts when abnormal water flow patterns suggest potential leaks 
+                                    Receive instant alerts when abnormal water flow patterns suggest potential leaks
                                     or pipe bursts.
                                 </p>
                             </div>
@@ -278,7 +309,7 @@
                                 </div>
                                 <h3>Usage Analytics</h3>
                                 <p>
-                                    AI-powered analysis of consumption patterns to identify waste and suggest 
+                                    AI-powered analysis of consumption patterns to identify waste and suggest
                                     optimization opportunities.
                                 </p>
                             </div>
@@ -290,7 +321,7 @@
                                 </div>
                                 <h3>Mobile App</h3>
                                 <p>
-                                    Flutter-based cross-platform mobile application for monitoring and controlling 
+                                    Flutter-based cross-platform mobile application for monitoring and controlling
                                     the system remotely.
                                 </p>
                             </div>
@@ -302,11 +333,11 @@
                 <section class="mb-5">
                     <h2 class="section-title">System Architecture</h2>
                     <p>
-                        The system follows a three-tier architecture with IoT devices at the edge, a cloud-based 
-                        processing layer, and mobile/web interfaces for user interaction. Data flows from sensors 
+                        The system follows a three-tier architecture with IoT devices at the edge, a cloud-based
+                        processing layer, and mobile/web interfaces for user interaction. Data flows from sensors
                         through Firebase to the AI processing engine, with results visualized in the mobile app.
                     </p>
-                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" 
+                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80"
                          alt="System Architecture" class="system-architecture">
                 </section>
 
@@ -314,12 +345,12 @@
                 <section class="mb-5">
                     <h2 class="section-title">Technical Implementation</h2>
                     <p>
-                        The hardware component uses flow sensors connected to microcontrollers (ESP32) that transmit 
-                        data via WiFi. The cloud backend is built with Firebase for real-time data synchronization 
+                        The hardware component uses flow sensors connected to microcontrollers (ESP32) that transmit
+                        data via WiFi. The cloud backend is built with Firebase for real-time data synchronization
                         and Python for AI processing.
                     </p>
                     <p>
-                        The mobile application, developed with Flutter, provides a cross-platform interface with 
+                        The mobile application, developed with Flutter, provides a cross-platform interface with
                         real-time dashboards, historical data visualization, and alert management.
                     </p>
                     <div class="mb-4">
@@ -341,9 +372,9 @@
             <div class="col-lg-4">
                 <!-- Project Image -->
                 <div class="sticky-top" style="top: 20px;">
-                    <img src="https://images.unsplash.com/photo-1509316785289-025f5b846b35?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80" 
+                    <img src="https://images.unsplash.com/photo-1509316785289-025f5b846b35?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=800&q=80"
                          alt="Smart Water Metering System" class="img-fluid project-image">
-                    
+
                     <!-- Project Details -->
                     <div class="card mb-4">
                         <div class="card-body">
@@ -390,15 +421,15 @@
             <h2 class="section-title">Application Screenshots</h2>
             <div class="screenshot-gallery">
                 <div class="screenshot-item">
-                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" 
+                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80"
                          alt="Dashboard View">
                 </div>
                 <div class="screenshot-item">
-                    <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" 
+                    <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80"
                          alt="Consumption Analytics">
                 </div>
                 <div class="screenshot-item">
-                    <img src="https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" 
+                    <img src="https://images.unsplash.com/photo-1467232004584-a241de8bcf5d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80"
                          alt="Alert Notifications">
                 </div>
             </div>
